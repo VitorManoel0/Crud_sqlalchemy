@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Crud</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+<h1 style="text-align: center;">CRUD</h1>
+<div class="container">
+<div class="container">
+    <br><br>
+<div class="row">
+      <div class="col" >
+          <a class="btn btn-primary" href="/add/funcionario">Adicionar Funcionario</a>
+          <a class="btn btn-primary" href="/add/empresa">Adicionar Empresa</a>
+      </div>
+</div>
+    <br><br>
+</div>
+    <div class="row">
+      <div class="col" >
+      <h3 style="text-align: center;">Funcionário</h3>
+            <table class = "table">
+                <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Cargo</th>
+                    <th>Empresa</th>
+                    <th>Ações</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for e in funcionario %}
+                    <tr>
+                        <td>{{ e.nome }}</td>
+                        <td>{{ e.cargo }}</td>
+                        {% for i in empresa_nome %}
+                            {% if e.empresa.id ==  i[0][1]%}
+                                <td>{{ i[0][0] }}</td>
+                            {% endif %}
+                        {% endfor %}
+                        <td><a class="btn btn-primary" href="/edit/func/{{ e.id }}">editar</a></td>
+                        <td><a class="btn btn-primary" href="/delete/func/{{ e.id }}">delete</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+      </div>
+          <div class="col" >
+          <h3 style="text-align: center;">Empresa</h3>
+            <table class = "table">
+                <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>cidade</th>
+                    <th>Ações</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for i in empresa %}
+                    <tr>
+                        <td>{{ i.nome }}</td>
+                        <td>{{ i.local }}</td>
+                        <td><a class="btn btn-primary" href="/edit/empre/{{ i.id }}">editar</a></td>
+                        <td><a class="btn btn-primary" href="/delete/empre/{{ i.id }}">delete</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

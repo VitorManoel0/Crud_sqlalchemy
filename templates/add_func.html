@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+<div class="conteiner">
+<h1 style="text-align: center;">Adicionar</h1>
+<form action="/add/funcionario" method="post">
+    <div class="row">
+        <div class="col-md-6">
+            <input type="text" name="nome" id="nome" placeholder="nome" class="form-control">
+        </div>
+        <div class="col-md-6">
+            <input type="text" name="cargo" id="cargo" placeholder="cargo" class="form-control">
+        </div>
+        <select id="empresa_id" name="empresa_id" required class="custom-select">
+            {% for e in empresa %}
+                <option value="{{ e.id }}">{{ e.nome }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <br>
+    <div class="row col-xs-12">
+        <button type="submit" class="btn btn-bloco btn-success">Enviar</button>
+    </div>
+</form>
+</div>
+</body>
+</html>
